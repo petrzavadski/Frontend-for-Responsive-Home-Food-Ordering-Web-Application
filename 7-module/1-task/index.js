@@ -73,9 +73,6 @@ for (let i = 1; i < anchor.length; i++) {
 
           event.preventDefault();
 
-// console.log(event.target.dataset.id);
-
-
 
    const press =  new CustomEvent('ribbon-select', { // имя события должно быть именно 'ribbon-select'
             detail: event.target.dataset.id, // уникальный идентификатора категории из её объекта
@@ -129,6 +126,4 @@ function scrollEvt(){
 
 }}
 
-  }
-}
 
