@@ -2,6 +2,7 @@ import createElement from '../../assets/lib/create-element.js';
 
 export default class Modal {
   constructor() {
+
     this.render();
 
     this.elem.addEventListener('click', (event) => this.onClick(event));
@@ -65,3 +66,4 @@ export default class Modal {
     this.elem.remove();
   }
 }
+
