@@ -113,15 +113,6 @@ function scrollEvt(){
     if (scrollLeft==0) left.classList.toggle('ribbon__arrow_visible');
     if (scrollRight<1) right.classList.toggle('ribbon__arrow_visible');
 
-    // if ((left.classList.className!=='ribbon__arrow_visible') && (scrollLeft>0)) left.classList.toggle('ribbon__arrow_visible');
-
-
-        // console.log('left.className', left.className);
-    // console.log('right.className', right.className);
-
-    // left.classList.className('ribbon__arrow_visible');
-    // right.classList.className('ribbon__arrow_visible');
-
 }
 
 }}
