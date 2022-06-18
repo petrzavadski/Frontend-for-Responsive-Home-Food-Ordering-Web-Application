@@ -1,7 +1,7 @@
 .slider {
   position: relative;
   background-color: var(--color-black-dark);
-  margin: 0 16px;
+  /* margin: 0 16px; */
   width: 330px;
   height: 8px;
   border-radius: 3px;

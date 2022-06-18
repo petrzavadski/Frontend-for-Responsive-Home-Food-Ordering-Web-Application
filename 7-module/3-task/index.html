@@ -17,14 +17,69 @@
   <script type="module">
     import StepSlider from './index.js';
 
-    let stepSlider = new StepSlider({
-      steps: 5
-    });
+    let config = {
+      steps: 5,
+      value: 0
+    }
+
+    let stepSlider = new StepSlider(config);
+
+  
 
     holder.append(stepSlider.elem);
+    
+    // stepSlider.clearActiveStep();
 
-    holder.addEventListener('slider-change', (event) => console.log(event));
-  </script>
+//     holder.addEventListener('click', (event) => {
+
+//       let segments = (config.steps-1);
+      
+
+//       let value = Math.round((event.offsetX/event.target.clientWidth)*segments);
+
+//       let valuePercents = value / segments * 100;
+
+//       config.value = value;
+
+// let thumb = document.querySelector('.slider__thumb');
+// let progress = document.querySelector('.slider__progress');
+
+
+// thumb.style.left = `${valuePercents}%`;
+// progress.style.width = `${valuePercents}%`;
+
+// let newVal = document.querySelector('.slider__value');
+
+// newVal.innerHTML = config.value;
+
+// let slider = document.querySelector('.slider__steps').childNodes;
+
+// let slider2 = document.querySelector('.slider__steps')
+
+
+// let counts = []
+
+// for (let i=0;i<slider.length;i++){
+
+
+// if (slider[i].className=='slider__step-active') slider[i].classList.remove('slider__step-active');
+
+// if (slider[i].tagName=='SPAN') counts.push(i);
+
+// }
+
+
+// slider[counts[config.value]].classList.add('slider__step-active');
+
+
+//     }
+    
+    
+    
+//     );
+
+
+</script>
 </body>
 
 </html>
