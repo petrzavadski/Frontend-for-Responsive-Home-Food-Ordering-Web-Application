@@ -8,10 +8,12 @@ export default class StepSlider {
     this.elem.onclick = event => {
       this.handleClick(event);
     }; 
+ 
   }
 
   setValue(val) {
     this.sliderValue.textContent = val;
+    
   }
 
   setProgress(val) {
@@ -24,7 +26,9 @@ export default class StepSlider {
   setActiveStep(n) {
     // добавляем класс slider__step-active активному шагу
 
+    console.log(n);
     this.stepsElem.children[n].className = 'slider__step-active';
+   
 
   }
 
@@ -51,7 +55,7 @@ export default class StepSlider {
 
     // 2 вариант - ПОЧЕМУ-ТО НЕ РАБОТАЕТ!!!
 
-    this.stepsElem.querySelector('.slider__step-active').remove('slider__step-active');
+    this.stepsElem.querySelector('.slider__step-active').classList.remove('slider__step-active');
     // del.classList.remove('slider__step-active');
  
     // 3 вариант - РАБОТАЕТ
@@ -78,19 +82,30 @@ export default class StepSlider {
     // console.log(event.offsetX); 
 
     let wTotal = this.elem.clientWidth; //  width 
-    let oneSection = wTotal / this.steps;
+    let oneSection = wTotal / (this.steps - 1);
     
 
     let activeStep = (Math.round(event.offsetX / oneSection));
 
-console.log(activeStep);
-    console.log(activeStep / this.steps*100);
+    // console.log(activeStep);
+    console.log(activeStep / this.steps * 100);
 
+    let procent = (activeStep / (this.steps - 1)) * 100; 
+    this.clearActiveStep(); 
+    console.log(activeStep);
     this.setActiveStep(activeStep);
-    this.setProgress(activeStep / this.steps*100);
-
+    
+    this.setProgress(procent);
+    this.thumbElem.style.left = `${procent}%`;
     
 
+    this.setValue(activeStep);
+
+    this.elem.dispatchEvent(
+    new CustomEvent('slider-change', { // имя события должно быть именно 'slider-change'
+      detail: activeStep, // значение 0, 1, 2, 3, 4
+      bubbles: true // событие всплывает - это понадобится в дальнейшем
+    }));
 
   }
 
@@ -106,7 +121,7 @@ console.log(activeStep);
 
     thumb.innerHTML = `<span class="slider__value">${this.value}</span>`;
 
-    this.sliderValue = thumb.firstElement;
+    this.sliderValue = thumb.firstElementChild;
 
     slider.append(thumb);
 
@@ -128,14 +143,18 @@ console.log(activeStep);
 
     }
 
+   
+
     this.elem = slider;
+    this.thumbElem = thumb;
 
     // this.elem = createElement(text);
 
     this.progressElem = progress;
     this.stepsElem = steps;
-
-
+    // console.log(this.value)
+    this.setActiveStep(this.value);
+    console.log(this.thumbElem);
     
   }
 
