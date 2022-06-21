@@ -135,12 +135,13 @@ export default class StepSlider {
     // 2.     this.setActiveStep(this.value);
     this.setActiveStep(val);
     // 3 stepProgress
-    let activeStep = this.calculateStep(this);
-
-    let procent = (activeStep / (this.steps - 1)) * 100; 
+  
+    let procent = (val / (this.steps - 1)) * 100; 
+    this.thumbElem.style.left = `${procent}%`;
     
  
     this.setProgress(procent);
+
     
     //4  this.sliderValue
     this.setValue(val);
