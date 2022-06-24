@@ -1,3 +1,0 @@
-export default function promiseClick(button) {
-  // ваш код...
-}
