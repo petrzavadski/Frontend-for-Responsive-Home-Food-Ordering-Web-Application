@@ -40,23 +40,43 @@ export default class CartIcon {
   }
 
 
-
   updatePosition() {
     // ваш код ...
+
+    let isMobile = (document.documentElement.clientWidth <= 767);
+
+    // Если условие выполняется, обнуляем стили к исходным
+    if (isMobile) {
+      Object.assign(this.elem.style, {
+        position: '',
+        top: '',
+        left: '',
+        zIndex: ''
+      });
+      return;
+    }
+
+    let e = {
+      offsetWidth: 540,
+      offsetHeight: 440
+    };
 
     const isHidden = elem =>{
 
       // ВОПРОС №1 
       // Почему код ниже (строки * и ** ) дает ошибку и как это исправить:
 
-      //  const {x, y} = {elem.offsetWidth, elem.offsetHeight} // *
+      const {x, y} = {x: elem.offsetWidth, 
+        y: elem.offsetHeight}; // *
 
-      // console.log(x, y); // **
 
       // почему ошибка "Uncaught SyntaxError: Unexpected token '.' (at index.js:50:27)"
 
-      return !elem.offsetWidth && !elem.offsetHeight;
+      return !x && !y;
     };
+
+    isHidden(e);
+
 
     
 

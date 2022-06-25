@@ -9,9 +9,9 @@ export default class ProductCard {
 
   }
 
-render(){
+  render() {
 
-const table = createElement(`<div class="card">
+    const table = createElement(`<div class="card">
     <div class="card__top">
          <img src="/assets/images/products/${this.product.image}" class="card__image" alt="product">
         <span class="card__price">€${this.product.price.toFixed(2)}</span>
@@ -25,22 +25,22 @@ const table = createElement(`<div class="card">
 </div>`);
 
 
-const btn = table.querySelector(".card__button");
+    const btn = table.querySelector(".card__button");
 
-btn.addEventListener("click", ()=>{
+    btn.addEventListener("click", ()=>{
 
-const press =  new CustomEvent("product-add", { // имя события должно быть именно "product-add"
-    detail: this.product.id, // Уникальный идентификатора товара из объекта товара
-    bubbles: true // это событие всплывает - это понадобится в дальнейшем
-});
+      const press = new CustomEvent("product-add", { // имя события должно быть именно "product-add"
+        detail: this.product.id, // Уникальный идентификатора товара из объекта товара
+        bubbles: true // это событие всплывает - это понадобится в дальнейшем
+      });
 
-btn.dispatchEvent(press);
+      btn.dispatchEvent(press);
 
-});
+    });
 
-return table;
+    return table;
 
-}
+  }
 
 }
 
