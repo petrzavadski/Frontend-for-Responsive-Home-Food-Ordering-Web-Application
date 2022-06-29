@@ -47,6 +47,7 @@ export default [
     "id": "tom-yam-koong",
     "spiciness": 4
   },
+
   {
     "name": "Tom yam vegetarian",
     "price": 7,

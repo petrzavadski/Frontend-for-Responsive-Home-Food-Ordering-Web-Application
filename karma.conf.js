@@ -25,8 +25,8 @@ module.exports = function(config) {
         pattern: 'assets/lib/*.js',
         type: 'module',
       }
-    ],
 
+    ],
 
     // list of files to exclude
     exclude: [
@@ -76,4 +76,4 @@ module.exports = function(config) {
     // how many browser should be started simultaneous
     concurrency: Infinity
   });
-}
+};

@@ -47,12 +47,18 @@ export default class CartIcon {
 
     // Если условие выполняется, обнуляем стили к исходным
     if (isMobile) {
-      Object.assign(this.elem.style, {
-        position: '',
-        top: '',
-        left: '',
-        zIndex: ''
-      });
+      // Object.assign(this.elem.style, {
+      //   position: '',
+      //   top: '',
+      //   left: '',
+      //   zIndex: ''
+      // });
+
+      this.elem.style.position = '';
+      this.elem.style.top = '';
+      this.elem.style.zIndex = '';
+      this.elem.style.left = '';
+
       return;
     }
 
@@ -106,23 +112,32 @@ export default class CartIcon {
 
         let coord = Math.min(hor1, hor2) + 'px';
 
-        Object.assign(this.elem.style, {
-          position: 'fixed',
-          top: '50px',
-          zIndex: 1e3,
-          right: '10px',
-          left: coord
-        });
+        // Object.assign(this.elem.style, {
+        //   position: 'fixed',
+        //   top: '50px',
+        //   zIndex: 1e3,
+        //   right: '10px',
+        //   left: coord
+        // });
 
+        this.elem.style.position = 'fixed';
+        this.elem.style.top = '50px';
+        this.elem.style.zIndex = '1000';
+        this.elem.style.right = '10px';
+        this.elem.style.left = coord;
 
 
       } else {
         // корзина сверху
-        Object.assign(this.elem.style, {
-          position: 'absolute',
-          top: '',
-          left: ''
-        });
+        // Object.assign(this.elem.style, {
+        //   position: 'absolute',
+        //   top: '',
+        //   left: ''
+        // });
+
+        this.elem.style.position = 'absolute';
+        this.elem.style.top = '';
+        this.elem.style.left = '';
 
       }
 
