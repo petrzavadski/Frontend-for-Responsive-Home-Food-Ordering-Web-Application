@@ -125,7 +125,7 @@ export default class CartIcon {
         this.elem.style.zIndex = '1000';
         this.elem.style.right = '10px';
         this.elem.style.left = coord;
-
+   
 
       } else {
         // корзина сверху
