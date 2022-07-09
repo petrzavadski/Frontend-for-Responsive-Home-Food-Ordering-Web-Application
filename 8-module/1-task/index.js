@@ -43,25 +43,61 @@ export default class CartIcon {
   updatePosition() {
     // ваш код ...
 
-    let isMobile = document.documentElement.clientWidth <= 767;
+    let isMobile = (document.documentElement.clientWidth <= 767);
 
     // Если условие выполняется, обнуляем стили к исходным
-    if (isMobile) { return; }
+    if (isMobile) {
+      // Object.assign(this.elem.style, {
+      //   position: '',
+      //   top: '',
+      //   left: '',
+      //   zIndex: ''
+      // });
+
+      this.elem.style.position = '';
+      this.elem.style.top = '';
+      this.elem.style.zIndex = '';
+      this.elem.style.left = '';
+
+      return;
+    }
+
+    let e = {
+      offsetWidth: 540,
+      offsetHeight: 440
+    };
 
     const isHidden = elem =>{
 
-      // ВОПРОС №1
+      // ВОПРОС №1 
       // Почему код ниже (строки * и ** ) дает ошибку и как это исправить:
 
-      const {x, y} = { x: elem.offsetWidth, y: elem.offsetHeight }; // *
+      const {x, y} = {x: elem.offsetWidth, 
+        y: elem.offsetHeight}; // *
+
+
       // почему ошибка "Uncaught SyntaxError: Unexpected token '.' (at index.js:50:27)"
+
       return !x && !y;
     };
 
+    isHidden(e);
 
-    if (isHidden(this.elem)) {return;}
 
-<<<<<<< HEAD
+    
+
+    if (!(isHidden(this.elem))) {
+
+      if (typeof this.initY === 'undefined') {
+        
+        this.initY = this.elem.getBoundingClientRect().top + window.pageYOffset;
+      }
+
+
+      if (window.pageYOffset > this.initY) {
+        // плавающая корзина
+
+
         let hor1 = document.querySelector('.container').getBoundingClientRect().right + 20;
         let hor2 = document.documentElement.clientWidth - this.elem.offsetWidth - 10;
 
@@ -102,25 +138,18 @@ export default class CartIcon {
         this.elem.style.position = 'absolute';
         this.elem.style.top = '';
         this.elem.style.left = '';
-=======
-    if (typeof this.initY === 'undefined') {
-      this.initY = this.elem.getBoundingClientRect().top + window.scrollY;
-    }
->>>>>>> d23510fb2ea453dbb156e69d2096bdbc7adfa704
 
-    const isScrolledEnough = window.scrollY > this.initY;
+      }
 
-    let left = '';
-    if (isScrolledEnough) {
-      let hor1 = document.querySelector('.container').getBoundingClientRect().right + 20; // *
-      let hor2 = document.documentElement.clientWidth - this.elem.offsetWidth - 10; //**
+  
 
-      left = Math.min(hor1, hor2) + 'px';
     }
 
-    this.elem.style.left = left;
-    this.elem.classList.toggle('sticky', isScrolledEnough);
+
+
   }
+
+
 }
 
 // Вопрос №3:

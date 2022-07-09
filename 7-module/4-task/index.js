@@ -8,18 +8,18 @@ export default class StepSlider {
     this.addDragListeners();
     this.elem.onclick = event => {
       this.handleClick(event);
-      
-    }; 
+
+    };
 
 
   }
 
   // вычисление процентов  - метод
   pCalc(event) {
-    return (event.clientX - this.elem.getBoundingClientRect().left) / (this.elem.clientWidth) * 100; 
+    return (event.clientX - this.elem.getBoundingClientRect().left) / (this.elem.clientWidth) * 100;
   }
 
-  
+
 
   // констата getboundary
 
@@ -28,7 +28,7 @@ export default class StepSlider {
     //v true add class slider_dragging 
     // v false delete class slider_dragging
 
-    if (bolean === true) {this.elem.classList.add('slider_dragging');}
+    if (bolean === true) { this.elem.classList.add('slider_dragging'); }
     else {
       this.elem.classList.remove('slider_dragging');
     }
@@ -43,11 +43,11 @@ export default class StepSlider {
     let maxValue = this.steps - 1; // 2
 
     let oneSection = wTotal / (maxValue); // 165 
-    
+
 
     let activeStep = Math.round((event.clientX - this.elem.getBoundingClientRect().left) / oneSection); // 99/165
 
-    
+
     activeStep = (activeStep < 0) ? 0 : activeStep;
 
     return (activeStep > maxValue) ? maxValue : activeStep;
@@ -68,14 +68,14 @@ export default class StepSlider {
   addDragListeners() {
     //  все навешивание drag and drop из конструктора
 
-    
+
     this.handleMousemove = this.handleMousemove.bind(this);
     this.handleMouseup = this.handleMouseup.bind(this);
 
     this.thumbElem.onpointerdown = event => {
       this.handleMousedown(event);
-    }; 
-    this.thumbElem.ondragstart = function() {
+    };
+    this.thumbElem.ondragstart = function () {
       return false;
     };
 
@@ -96,25 +96,25 @@ export default class StepSlider {
   }
 
   handleMousemove(event) {
-    
+
     // вычисление шага
 
-    let procent = this.pCalc(event);    
-  
+    let procent = this.pCalc(event);
+
 
 
     if (procent > 100) { procent = 100; }
     if (procent < 0) { procent = 0; }
 
     this.thumbElem.style.left = `${procent}%`;
-    
- 
 
-  
+
+
+
     this.setProgress(procent);
 
     let activeStep = this.calculateStep(event);
-    this.value = activeStep; 
+    this.value = activeStep;
     this.setValue(activeStep);
 
 
@@ -135,37 +135,37 @@ export default class StepSlider {
     document.removeEventListener('pointerup', this.handleMouseup);
 
     this.toggleDraggingClass(false);
-   
+
     let activeStep = this.calculateStep(event);
     this.updateValue(activeStep);
-   
+
     this.dispatchChange();
 
-  
+
   }
 
   setValue(val) {
     this.sliderValue.textContent = val;
-    
+
   }
 
-  updateValue(step) { 
+  updateValue(step) {
 
     this.value = step;
-    this.clearActiveStep(); 
+    this.clearActiveStep();
     this.setActiveStep(step);
-  
-    let procent = (step / (this.steps - 1)) * 100; 
+
+    let procent = (step / (this.steps - 1)) * 100;
     this.thumbElem.style.left = `${procent}%`;
-    
- 
+
+
     this.setProgress(procent);
 
-    
+
     this.setValue(step);
 
-   
-  
+
+
   }
 
   setProgress(val) {
@@ -178,19 +178,19 @@ export default class StepSlider {
   setActiveStep(n) {
     // добавляем класс slider__step-active активному шагу
     this.stepsElem.children[n].className = 'slider__step-active';
-   
+
 
   }
 
   clearActiveStep() {
-  // удаляем все классы slider_step-active активном шагу
-      
+    // удаляем все классы slider_step-active активном шагу
+
     // 1 вариант - РАБОТАЕТ
 
     // let list = this.stepsElem;
 
     // for (let i = 0; i < list.children.length; i++) {
-           
+
     //   if (list.children[i].className === 'slider__step-active') {
 
     //     list.children[i].removeAttribute('class');
@@ -199,9 +199,9 @@ export default class StepSlider {
     //     // list.children[i].removeAttribute('class');
 
     //   }
-            
+
     // }
-    
+
 
     // 2 вариант 
 
@@ -209,7 +209,7 @@ export default class StepSlider {
 
     // 3 вариант - РАБОТАЕТ
     // for (let i = 0; i < this.stepsElem.children.length; i++) {
-      
+
     //   if (this.stepsElem.children[i].className == 'slider__step-active') {
     //     this.stepsElem.children[i].classList.remove('slider__step-active');
     //   }
@@ -219,7 +219,7 @@ export default class StepSlider {
   }
 
   handleClick(event) {
-  // определить координаты курсора во время клика
+    // определить координаты курсора во время клика
 
     let activeStep = this.calculateStep(event);
 
@@ -234,36 +234,36 @@ export default class StepSlider {
     const slider = document.createElement('div');
 
     slider.className = 'slider';
-    
+
     const thumb = document.createElement('div');
 
     thumb.className = 'slider__thumb';
 
     thumb.innerHTML = `<span class="slider__value">${this.value}</span>`;
 
-   
+
 
     slider.append(thumb);
 
     const progress = document.createElement('div');
 
     progress.className = 'slider__progress';
-  
+
     slider.append(progress);
-    
+
     const steps = document.createElement('div');
 
     steps.className = 'slider__steps';
 
     slider.append(steps);
 
-    for (let i = 0; i < this.steps;i++) {
+    for (let i = 0; i < this.steps; i++) {
 
       steps.append(document.createElement('span'));
 
     }
 
-   
+
 
     this.elem = slider;
     this.thumbElem = thumb;
@@ -271,10 +271,10 @@ export default class StepSlider {
     this.progressElem = progress;
     this.stepsElem = steps;
     this.sliderValue = thumb.firstElementChild;
-  
+
     this.setActiveStep(this.value);
- 
-    
+
+
   }
 
 }
