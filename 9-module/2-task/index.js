@@ -14,7 +14,6 @@ export default class Main {
 
   constructor() {
 
-    this.addEventListeners();
 
   }
 
@@ -59,11 +58,17 @@ export default class Main {
       });
 
       // console.log(this.stepSlider.elem); // (*) почему здесь выводит норм
+      this.addEventListeners();
+
     }
   
   }
 
   addEventListeners() {
+
+    const nuts = document.body.querySelector('#nuts-checkbox');
+    const vegeterian = document.body.querySelector('#vegeterian-checkbox');
+
     document.body.addEventListener('product-add', (event)=>{
       let productServer = event.detail;
       let product = this.productsGrid.products.find((product)=>product.id === productServer);
@@ -75,16 +80,40 @@ export default class Main {
     // (**) а здесь ошибка
     this.stepSlider.elem.addEventListener('slider-change',
       (event)=>{
-        // this.productsGrid.updateFilter({
-        //   maxSpiciness: value // значение остроты из события 'slider-change'
-        // });
-
-        console.log(event);
+        this.productsGrid.updateFilter({
+          maxSpiciness: event.detail // значение остроты из события 'slider-change'
+        });
 
       }
     );
 
+    this.ribbonMenu.elem.addEventListener('ribbon-select',
+      (event)=>{
 
+        this.productsGrid.updateFilter({
+          category: event.detail // категория из события 'ribbon-select'
+        });
+
+      }
+    );
+
+    nuts.addEventListener('change',
+      (event)=>{
+        this.productsGrid.updateFilter({
+          noNuts: event.target.checked // новое значение чекбокса
+        });
+
+      }
+    
+    );
+
+    vegeterian.addEventListener('change',
+      (event)=>{
+        this.productsGrid.updateFilter({
+          vegeterianOnly: event.target.checked // новое значение чекбокса
+        });
+      }
+    );
 
   }
 }
