@@ -1,6 +1,6 @@
 # Web Appilaction For Online Food Odering 
 
-![](https://github.com/petrzavadski/Frontend-for-Responsive-Home-Food-Ordering-Web-Application/edit/master/Screen.png)
+![](https://github.com/petrzavadski/Web-Application/Screen.png)
 
 `Application advantages and capabilities:`
 
