@@ -2,6 +2,7 @@
 
 ![](https://github.com/petrzavadski/Frontend-for-Responsive-Home-Food-Ordering-Web-Application/Screen.png)
 
+![](/Frontend-for-Responsive-Home-Food-Ordering-Web-Application/Screen.png)
 `Application advantages and capabilities:`
 
 - Multilevel filtering responsive system
