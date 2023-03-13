@@ -1,6 +1,6 @@
 # Web Appilaction For Online Food Odering 
 
-![](https://github.com/petrzavadski/Web-Application/Screen.png)
+![](https://github.com/petrzavadski/Web-Application/Screen.jpg)
 
 `Application advantages and capabilities:`
 
