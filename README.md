@@ -1,6 +1,6 @@
 # Web Appilaction For Online Food Odering 
 
-![](./Screen.jpg)
+![](./screen.jpg)
 
 `Application advantages and capabilities:`
 
