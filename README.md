@@ -2,7 +2,6 @@
 
 ![](./Screen.jpg)
 
-
 `Application advantages and capabilities:`
 
 - Multilevel filtering responsive system
