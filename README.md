@@ -1,6 +1,6 @@
 # Web Appilaction For Online Food Odering 
 
-![The San Juan Mountains are beautiful!](https://github.com/petrzavadski/Web-Application/Screen.jpg "San Juan Mountains")
+![]./Screen.jpg)
 
 
 `Application advantages and capabilities:`
